@@ -1770,3 +1770,151 @@ exports.sinceBlock2 = { transactions:
     fee: -0.0001 } ],
   lastblock: '000000001b10ca2a0b1ce96ba72ab81ca1e2026a6421b901629ce7b6db87f941'
 };
+exports.receivedbyaddressListTxt1 =     [
+  {
+    "account": "",
+    "address": "2N9VaC4SDRNNnEy6G8zLF8gnHgkY6LV9PsX",
+    "amount": 1009.599,
+    "confirmations": 76114,
+    "txids": [
+      "44954268b32d386733f64d457bc933bf323f31f3596b90becc718a5b7cbfce8a",
+      "236a1eece7702b3825cd81f1c4af06014bfba917a689bf22180e45eae33d5e0c",
+      "43be5a47de8f0cc885f67ba10e02fba13ab658158e41ad8ed9a9df65055c73f4",
+      "399938172ccf460a5cd5755975c637a25d2103a94f201c719ee47133145b3c32",
+      "fed09e25a68f2dc5f6c640ea04184de59e0aeb3adab7c42f8bcb7d497ba505c4",
+      "b83ef1ca869106ef78d069502baa42cb1a243b4af8bb45cc48ce3d8486103461"
+    ]
+  },
+  {
+    "account": "",
+    "address": "2NFGBfac6VAwXVBkuKy9ZN37rQJRTvV2uYu",
+    "amount": 1.9100000000000001,
+    "confirmations": 77369,
+    "txids": [
+      "b66e55ed332cb49f8bc6c1ffc5a41f47e4962269f7b88fc4bab52ec51a1ae04f",
+      "48adcf6e3b1e0fb2c99d71cad8132c8cbc20775b7e66a4ea2ee0a23655a2151f"
+    ]
+  },
+  {
+    "account": "",
+    "address": "2MuBYiL2ULWv21ASwKgLqeyjYb49Y4J79wC",
+    "amount": 0.91,
+    "confirmations": 77361,
+    "txids": [
+      "4908d0ac5d340fc8d72e9d9e88c34f3159f7a0fa0b31123279c50fa767005fc4"
+    ]
+  },
+  {
+    "account": "",
+    "address": "2NCGyhjXuZ4xni5fYgu1QwkhQY4xDTvNL5A",
+    "amount": 0.2,
+    "confirmations": 76945,
+    "txids": [
+      "fed09e25a68f2dc5f6c640ea04184de59e0aeb3adab7c42f8bcb7d497ba505c4",
+    ]
+  },
+  {
+    "account": "",
+    "address": "2N2XYoQKXQGUXJUG7AvjA1LAGWzf65RcBHG",
+    "amount": 100,
+    "confirmations": 74034,
+    "txids": [
+      "ed426d37e56919485bec45c61043596781c09af0e9637998fcace7f59631c5ae",
+    ]
+  }
+]
+
+exports.receivedbyaddressListTxt2 =     [
+  {
+    "account": "",
+    "address": "2N9VaC4SDRNNnEy6G8zLF8gnHgkY6LV9PsX",
+    "amount": 1001,
+    "confirmations": 76114,
+    "txids": [
+      "44954268b32d386733f64d457bc933bf323f31f3596b90becc718a5b7cbfce8a",
+      "236a1eece7702b3825cd81f1c4af06014bfba917a689bf22180e45eae33d5e0c",
+      "43be5a47de8f0cc885f67ba10e02fba13ab658158e41ad8ed9a9df65055c73f4",
+      "399938172ccf460a5cd5755975c637a25d2103a94f201c719ee47133145b3c32",
+      "fed09e25a68f2dc5f6c640ea04184de59e0aeb3adab7c42f8bcb7d497ba505c4",
+      "b83ef1ca869106ef78d069502baa42cb1a243b4af8bb45cc48ce3d8486103461"
+    ]
+  },
+  {
+    "account": "",
+    "address": "2NFGBfac6VAwXVBkuKy9ZN37rQJRTvV2uYu",
+    "amount": 1.9100000000000001,
+    "confirmations": 77369,
+    "txids": [
+      "b66e55ed332cb49f8bc6c1ffc5a41f47e4962269f7b88fc4bab52ec51a1ae04f",
+      "48adcf6e3b1e0fb2c99d71cad8132c8cbc20775b7e66a4ea2ee0a23655a2151f",
+    ]
+  }
+]
+
+exports.receivedbyaddressListTxt3 = [
+    {
+    "account": "",
+    "address": "2N9VaC4SDRNNnEy6G8zLF8gnHgkY6LV9PsX",
+    "amount": 1009.599,
+    "confirmations": 76114,
+    "txids": [
+        "44954268b32d386733f64d457bc933bf323f31f3596b90becc718a5b7cbfce8a",
+        "236a1eece7702b3825cd81f1c4af06014bfba917a689bf22180e45eae33d5e0c",
+        "43be5a47de8f0cc885f67ba10e02fba13ab658158e41ad8ed9a9df65055c73f4",
+        "399938172ccf460a5cd5755975c637a25d2103a94f201c719ee47133145b3c32",
+        "fed09e25a68f2dc5f6c640ea04184de59e0aeb3adab7c42f8bcb7d497ba505c4",
+        "b83ef1ca869106ef78d069502baa42cb1a243b4af8bb45cc48ce3d8486103461",
+      ]
+  },
+  {
+    "account": "",
+    "address": "2NFGBfac6VAwXVBkuKy9ZN37rQJRTvV2uYu",
+    "amount": 1.9100000000000001,
+    "confirmations": 77369,
+    "txids": [
+        "b66e55ed332cb49f8bc6c1ffc5a41f47e4962269f7b88fc4bab52ec51a1ae04f",
+        "48adcf6e3b1e0fb2c99d71cad8132c8cbc20775b7e66a4ea2ee0a23655a2151f",
+      ]
+  },
+  {
+    "account": "",
+    "address": "2MuBYiL2ULWv21ASwKgLqeyjYb49Y4J79wC",
+    "amount": 0.91,
+    "confirmations": 77361,
+    "txids": [
+        "4908d0ac5d340fc8d72e9d9e88c34f3159f7a0fa0b31123279c50fa767005fc4"
+      ]
+  },
+  {
+    "account": "",
+    "address": "2NCGyhjXuZ4xni5fYgu1QwkhQY4xDTvNL5A",
+    "amount": 0.2,
+    "confirmations": 76945,
+    "txids": [
+        "fed09e25a68f2dc5f6c640ea04184de59e0aeb3adab7c42f8bcb7d497ba505c4",
+      ]
+  },
+  {
+    "account": "",
+    "address": "2N2XYoQKXQGUXJUG7AvjA1LAGWzf65RcBHG",
+    "amount": 100,
+    "confirmations": 74034,
+    "txids": [
+        "ed426d37e56919485bec45c61043596781c09af0e9637998fcace7f59631c5ae",
+      ]
+  },
+  {
+    "account": "",
+    "address": "2NG3eraWTiDSTGYWX4Xc6qAH1rwEHwXiHr9",
+    "amount": 0,
+    "confirmations": 0,
+    "txids": []
+  },
+  {
+    "account": "",
+    "address": "2NAvfxq4AmDE89eJbAjNK2gXu1kfFNu99Bo",
+    "amount": 0,
+    "confirmations": 0,
+    "txids": []
+  }
+]
