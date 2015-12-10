@@ -1067,6 +1067,105 @@ BitGoD.prototype.handleGetReceivedByAddress = function(address, minConfirms) {
   });
 };
 
+/**
+ * Returns all addresses that have received from a transaction, to get a list of addresses on the system, execute listreceivedbyaddress 0 true
+ * @param {int} minConfirms The minimum confirms needed to add amount
+ * @param {boolean} includeEmpty Whether to show empty balance addresses
+ * @returns an array of objects containing:
+   "address" : receiving address
+   "account" : the account of the receiving address
+   "amount" : total amount received by the address
+   "confirmations" : number of confirmations of the most recent transaction included
+ */
+BitGoD.prototype.handleListReceivedByAddress = function(minConfirms, includeEmpty) {
+
+  var self = this;
+
+  // the minimum confirms before amount added to total
+  minConfirms = this.getNumber(minConfirms, 1);
+
+  //whether to show 0 balance addresses
+  includeEmpty = includeEmpty || false;
+
+  if (includeEmpty && typeof(includeEmpty) !== 'boolean') {
+    throw self.error('Instant flag was not a boolean', -1);
+  }
+
+  var listReceivedByAddressInternal = function(accntAddrs) {
+
+    accntAddrs = accntAddrs || [];
+    return self.handleListTransactions("", 1e12, 0, undefined).then(function(transactions){
+
+      return _(transactions)
+          .union(accntAddrs,transactions) //combine all addresses, even empty if includeEmpty is true
+          .reduce(function(endResult, current) {
+
+            var exists = _.find(endResult, { 'address': current.address });
+
+            if (!exists) {
+              endResult.push({
+
+                address: current.address,
+                account: current.account,
+                amount : current.confirmations >= minConfirms ? current.amount : 0,
+                confirmations: current.confirmations,
+                timereceived: current.timereceived,
+                txids : current.txid ? [current.txid] : [],
+
+              });
+            } else {
+
+              if (current.confirmations >= minConfirms) {
+                exists.amount += current.amount;
+              }
+              //only txids that pay to the address
+              if (current.amount > 0 && (current.confirmations >= minConfirms) ) {
+                if(current.txid && _.indexOf(exists.txids, current.txid) === -1) {
+                  exists.txids.push(current.txid);
+                }
+                if(exists.timereceived < current.timereceived) {
+                  exists.confirmations = current.confirmations;
+                }
+              }
+
+            }
+            return endResult;
+          }, [])
+          //includeEmpty determines if to show 0 balance addresses or not
+          .filter(function(tx){
+            return includeEmpty ? (tx.amount >= 0):(tx.amount > 0);
+          })
+          //timereceived was useful to ensure latest confirm count but not a call output so we remove it
+          .map(function(tx){return _.omit(tx,'timereceived');})
+    });
+  };
+
+  if(includeEmpty) {
+    //include empty addresses
+    return self.handleGetAddressesByAccount().then(function(addrs){
+
+      var accntAddrs = _(addrs)
+          .map(function(addrs){
+            return {
+              address: addrs,
+              account: "",
+              amount : 0,
+              confirmations: 0,
+              timereceived:0,
+              txids : '',
+            };
+          },[]).value();
+
+      return listReceivedByAddressInternal(accntAddrs);
+    });
+
+  } else {
+    return listReceivedByAddressInternal();
+  }
+
+};
+
+
 BitGoD.prototype.handleGetTransaction = function(txid) {
   this.ensureWallet();
   var self = this;
@@ -1464,6 +1563,7 @@ BitGoD.prototype.run = function(testArgString) {
     'listtransactions' : self.handleListTransactions,
     'listsinceblock' : self.handleListSinceBlock,
     'getreceivedbyaddress' : self.handleGetReceivedByAddress,
+    'listreceivedbyaddress' : self.handleListReceivedByAddress,
     'sendmany' : self.handleSendMany,
     'settxfee' : self.handleSetTxFee,
     'validateaddress' : self.handleValidateAddress,
