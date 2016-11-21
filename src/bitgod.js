@@ -1122,8 +1122,12 @@ BitGoD.prototype.handleListSinceBlock = function(blockHash, targetConfirms) {
     return self.bitgo.blockchain().getBlock({ id: 'latest' });
   })
   .then(function(block) {
-    var height = block.height - targetConfirms + 1;
-    return self.bitgo.blockchain().getBlock({id: String(height)});
+    if (targetConfirms == 1) {
+      return block;
+    } else {
+      var height = block.height - targetConfirms + 1;
+      return self.bitgo.blockchain().getBlock({id: String(height)});
+    }
   })
   .then(function(block) {
     return {
