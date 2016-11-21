@@ -1093,11 +1093,6 @@ BitGoD.prototype.handleListSinceBlock = function(blockHash, targetConfirms) {
   this.ensureWallet();
   var self = this;
 
-  // targetConfirms seems like just another way to do GetBlockHash and doesn't affect transactions
-  if (targetConfirms && targetConfirms != 1) {
-    throw new Error('targetConfirms not supported');
-  }
-
   var transactions;
 
   return Q()
@@ -1122,6 +1117,10 @@ BitGoD.prototype.handleListSinceBlock = function(blockHash, targetConfirms) {
     transactions = result.reverse();
     // Get latest block hash
     return self.bitgo.blockchain().getBlock({ id: 'latest' });
+  })
+  .then(function(block) {
+    var height = block.height - targetConfirms + 1;
+    return self.bitgo.blockchain().getBlock({id: String(height)});
   })
   .then(function(block) {
     return {
