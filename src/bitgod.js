@@ -1093,6 +1093,9 @@ BitGoD.prototype.handleListSinceBlock = function(blockHash, targetConfirms) {
   this.ensureWallet();
   var self = this;
 
+  // default targetConfirms is 1.
+  targetConfirms = typeof targetConfirms !== 'undefined' ?  targetConfirms : 1;
+
   var transactions;
 
   return Q()
